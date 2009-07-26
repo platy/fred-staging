@@ -23,6 +23,7 @@ public class PluginInfoWrapper implements Comparable<PluginInfoWrapper> {
 	private final boolean isPortForwardPlugin;
 	private final boolean isMultiplePlugin;
 	private final boolean isFCPPlugin;
+	private final boolean isAPIPlugin;
 	private final boolean isVersionedPlugin;
 	private final boolean isLongVersionedPlugin;
 	private final boolean isThemedPlugin;
@@ -47,6 +48,7 @@ public class PluginInfoWrapper implements Comparable<PluginInfoWrapper> {
 		isPortForwardPlugin = (plug instanceof FredPluginPortForward);
 		isMultiplePlugin = (plug instanceof FredPluginMultiple);
 		isFCPPlugin = (plug instanceof FredPluginFCP);
+		isAPIPlugin = (plug instanceof FredPluginAPI);
 		isVersionedPlugin = (plug instanceof FredPluginVersioned);
 		isLongVersionedPlugin = (plug instanceof FredPluginRealVersioned);
 		isThemedPlugin = (plug instanceof FredPluginThemed);
@@ -194,6 +196,13 @@ public class PluginInfoWrapper implements Comparable<PluginInfoWrapper> {
 	
 	public boolean isFCPPlugin() {
 		return isFCPPlugin;
+	}
+
+	/**
+	 * Does this plugin have an API?
+	 */
+	public boolean isAPIPlugin() {
+		return isAPIPlugin;
 	}
 	
 	public boolean isThemedPlugin() {

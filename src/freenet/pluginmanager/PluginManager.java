@@ -598,6 +598,23 @@ public class PluginManager {
 	}
 
 	/**
+	 * Look for specified plugin and return it's API if it has one
+	 * @param pluginname
+	 * @return
+	 * @throws freenet.pluginmanager.PluginNotFoundException
+	 */
+	public Object getPluginAPI(String pluginname) throws PluginNotFoundException {
+		synchronized(pluginWrappers) {
+			for(int i = 0; i < pluginWrappers.size(); i++) {
+				PluginInfoWrapper pi = pluginWrappers.get(i);
+				if(pi.isAPIPlugin() && pi.getPluginClassName().equals(pluginname))
+					return ((FredPluginAPI)pi.plug).getPluginAPI();
+			}
+		}
+		throw new PluginNotFoundException("Could not find plugin "+pluginname+" with plugin api");
+	}
+
+	/**
 	 * look for a Plugin with given classname
 	 * @param plugname
 	 * @return the true if not found

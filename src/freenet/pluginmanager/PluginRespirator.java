@@ -67,6 +67,16 @@ public class PluginRespirator {
 		return new PluginTalker(fpt, node, pluginname, identifier);
 	}
 
+	/**
+	 * Get the API of another plugin
+	 * @param pluginname classname of main class of other plugin
+	 * @return API
+	 * @throws freenet.pluginmanager.PluginNotFoundException
+	 */
+	public Object getPluginAPI(String pluginname) throws PluginNotFoundException {
+		return pluginManager.getPluginAPI(pluginname);
+	}
+
 	public ToadletContainer getToadletContainer() {
 		return node.clientCore.getToadletContainer();
 	}
